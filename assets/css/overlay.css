@@ -272,85 +272,287 @@ contact
 --------------------------------------------- 
 */
 
+
+/* 
+---------------------------------------------
+08. contact
+--------------------------------------------- 
+*/
+
+/* Prevent any horizontal scroll from sneaking back */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Edge-to-edge background, no top/bottom gutter */
 #contact-us {
-  margin-top: 140px;
-}
-
-#contact-us .container-fluid .col-lg-6 {
-  padding: 0px;
-}
-
-#contact-us .contact-form {
-  content: "";
-  position: absolute;
-  top: 0; left: 50%;
-  width: 200%;          /* double the width so it overflows both sides */
-  height: 100%;
+  margin: 0;                                    /* kill the 140px top margin */
+  position: relative;
   background: url("../images/here.png") no-repeat center center;
   background-size: cover;
-  transform: translateX(-50%);
-  z-index: -1;
+  padding: 0;                                   /* remove the 80px vertical padding */
+  text-align: center;                           /* make the footer, button, etc centered */
 }
 
+/* Full-width container so bg never gaps */
+#contact-us .container-fluid {
+  padding: 0;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* Center the row for the form */
+#contact-us .row.justify-content-center {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+/* Desktop: fixed 800px form wrapper */
+@media (min-width: 992px) {
+  #contact-us .col-lg-6 {
+    flex: none !important;
+    width: 800px !important;
+    max-width: 800px !important;
+  }
+}
+
+/* Tablet & below: full-width with side gutters */
+@media (max-width: 991px) {
+  #contact-us .col-lg-6,
+  #contact-us .col-md-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 20px;
+  }
+}
+
+/* Wrap the form in its white box exactly as before */
+#contact-us .contact-form {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 80px 20px;        /* your original breathing room inside */
+}
+
+/* The inner form card */
 #contact-us .contact-form #contact {
   background-color: #fff;
   padding: 40px;
   border-radius: 5px;
+  text-align: left;
 }
 
+/* Inputs, textarea, button untouched from your existing rules */
 .contact-form input,
-.contact-form textarea {
-  color: #7a7a7a;
-  font-size: 13px;
-  border: 1px solid #ddd;
-  background-color: #fff;
-  width: 100%;
-  height: 40px;
-  outline: none;
-  line-height: 40px;
-  padding: 0px 10px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin-bottom: 30px;
-}
+.contact-form textarea { /* … */ }
+.contact-form button { /* … */ }
 
-.contact-form textarea {
-  height: 150px;
-  resize: none;
-}
-
-.contact-form ::-webkit-input-placeholder { /* Edge */
-  color: #7a7a7a;
-}
-
-.contact-form :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #7a7a7a;
-}
-
-.contact-form ::placeholder {
-  color: #7a7a7a;
-}
-
-.contact-form button {
-  display: inline-block;
-  font-size: 13px;
-  padding: 11px 17px;
-  background-color: #ed563b;
+/* Footer below the form */
+#contact-us > footer {
+  margin: 40px 0;            /* some space above it, 0 below */
   color: #fff;
-  text-align: center;
-  font-weight: 400;
-  text-transform: uppercase;
-  transition: all .3s;
-  border: none;
-  outline: none;
-  margin-top: -8px;
-}
-
-.contact-form button:hover {
-  background-color: #f9735b;
+  opacity: 0.8;
 }
 
 
+/* On desktop, make the column a fixed 800px */
+@media (min-width: 992px) {
+  #contact-us .col-lg-6 {
+    flex: none !important;
+    width: 800px !important;
+    max-width: 800px !important;
+  }
+}
+
+/* On tablets and below, let it go full-width with side padding */
+@media (max-width: 991px) {
+  #contact-us .col-lg-6,
+  #contact-us .col-md-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 20px;
+  }
+}
+
+/* Banner still scales nicely */
+@media (max-width: 991px) {
+  .main-banner .caption {
+    width: 90% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-banner .caption {
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 0 10px;
+  }
+  .main-banner .caption h6 {
+    font-size: 14px !important;
+    line-height: 1.2;
+  }
+  .main-banner .caption h2 {
+    font-size: 36px !important;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+  .main-banner .caption .main-button {
+    margin-top: 15px !important;
+  }
+}
+
+  /* 2) Disable the overflowing background image */
+  #contact-us::before {
+    display: none !important;
+  }
+  #contact-us {
+    padding: 40px 20px 80px !important;
+  }
+
+  /* 3) Restore normal flow for the form wrapper */
+  #contact-us .contact-form {
+    position: static !important;
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+  /* 4) Reduce inner #contact padding so it fits */
+  #contact-us .contact-form #contact {
+    padding: 20px !important;
+  }
+
+  /* 5) Re-flow footer beneath the form */
+  #contact-us > footer {
+    position: static !important;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+
+
+@media (max-width: 575.98px) {
+  /* Force that form column to full width on really small screens */
+  #contact-us .col-lg-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+}
+@media (max-width: 767px) {
+  .main-banner .caption {
+    width: 90% !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center;
+    padding: 0 10px;
+  }
+}
+
+/* Remove all top/bottom padding from the contact section */
+#contact-us {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove any margin the section itself may have */
+#contact-us {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Tame the breathing-room inside the white box */
+#contact-us .contact-form {
+  padding: 20px 10px !important;
+}
+
+/* Tame the padding inside the form itself */
+#contact-us .contact-form #contact {
+  padding: 20px !important;
+}
+
+/* Bring the footer in a bit closer */
+#contact-us > footer {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* 09. expand contact form to full width ----------------*/
+
+/* 1) Remove the 800px cap on the form wrapper */
+#contact-us .contact-form {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 80px 20px !important;  /* keep your inner breathing room */
+}
+
+/* 2) On large screens, let the grid columns go full width */
+@media (min-width: 992px) {
+  #contact-us .col-lg-6 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* 3) Ensure small‐screen overrides still work */
+@media (max-width: 991px) {
+  #contact-us .col-lg-6,
+  #contact-us .col-md-8 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 20px;
+  }
+}
+
+/* Collapse any remaining top/bottom padding in the contact area */
+#contact-us {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove the 80px “wrapper” padding you added earlier */
+#contact-us .contact-form {
+  padding-top: 1 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Remove the 40px inner padding on the white form card */
+#contact-us .contact-form #contact {
+  padding: 0 !important;
+}
+
+/* Tuck the footer up tighter */
+#contact-us > footer {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* Tuck the footer up under the form */
+#contact-us > footer {
+  max-width: none !important;
+  margin: 10px 0 0 10px !important;   /* 10px instead of 20px */
+  padding: 0;
+  text-align: left !important;
+}
+
+/* TIGHTEN GAP ABOVE THE FORM */
+#contact-us {
+  padding-top: 10px !important;
+}
+#contact-us .contact-form {
+  padding-top: 10px !important;
+}
 
 
