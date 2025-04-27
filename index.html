@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Poppins font family -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+    rel="stylesheet"
+  />
+
+  <title>Training Studio</title>
+
+  <!-- Core CSS -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/font-awesome.css" />
+  <link rel="stylesheet" href="assets/css/templatemo-training-studio.css" />
+
+  <!-- Layout tweaks: remove header bg, center logo, eliminate gaps -->
+  <style>
+    /* Transparent header */
+    .header-area,
+    .header-sticky {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    }
+    /* Center logo */
+    .header-area .container {
+      text-align: center;
+    }
+    .header-area .logo {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #00adee;
+      text-decoration: none;
+    }
+    .header-area .logo em {
+      font-style: normal;
+      font-weight: 300;
+    }
+    /* Remove gap between banner and contact */
+    .main-banner {
+      margin-bottom: 0 !important;
+    }
+    #contact-us {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Main Banner -->
+  <div class="main-banner" id="top">
+    <video autoplay muted loop id="bg-video">
+      <source src="assets/images/clip 2.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay header-text">
+      <div class="caption">
+        <h6>Director at Nostrum Laboratories</h6>
+        <h2>Dr Leslie <em>Beauvais</em></h2>
+        <div class="main-button">
+          <a href="#contact-us" id="scroll-to-contact">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Us Section: form fills full width and is centered -->
+  <section class="section" id="contact-us">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+          <div class="contact-form">
+           
+            <form
+            id="contact"
+            action="https://formspree.io/f/mvgknpee"
+            method="POST"
+          > <footer>
+            <p>
+              © <span id="year"></span> Leslie Beauvais – All Rights Reserved.
+            </p>
+          </footer>
+          
+          <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+          </script>
+            <!-- Redirect back to this same page on success -->
+  <input type="hidden" name="_next" value="http://127.0.0.1:5500/training-studio-1.0.0/index.html" />
+
+  <!-- disable the default Formspree footer -->
+  <input type="hidden" name="_captcha" value="false" />
+            <!-- Optional: set a custom email subject -->
+            <input type="hidden" name="_subject" value="New inquiry from website" />
+          
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <fieldset>
+                  <input
+                    name="name"
+                    type="text"
+                    id="name"
+                    placeholder="Your Name*"
+                    required
+                  />
+                </fieldset>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <fieldset>
+                  <!-- Note: Formspree expects the email field to be named "_replyto" -->
+                  <input
+                    name="_replyto"
+                    type="email"
+                    id="email"
+                    placeholder="Your Email*"
+                    required
+                  />
+                </fieldset>
+              </div>
+              <div class="col-md-12 col-sm-12">
+                <fieldset>
+                  <input
+                    name="subject"
+                    type="text"
+                    id="subject"
+                    placeholder="Subject"
+                  />
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <textarea
+                    name="message"
+                    rows="6"
+                    id="message"
+                    placeholder="Message"
+                    required
+                  ></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12 text-center">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-button">
+                    Send Message
+                  </button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+
+          <script>
+            const form = document.getElementById('contact');
+            form.addEventListener('submit', e => {
+              e.preventDefault();
+              fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+              }).then(res => {
+                if (res.ok) {
+                  // show your own inline message
+                  document.getElementById('contact').innerHTML =
+                    '<p class="thank-you">Thanks for reaching out — I’ll be in touch soon!</p>';
+                } else {
+                  // handle error…
+                }
+              });
+            });
+          </script>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery-2.1.0.min.js"></script>
+  <script src="assets/js/popper.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script>
+    // Smooth slide-down scroll
+    $('#scroll-to-contact').on('click', function(e) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $('#contact-us').offset().top
+      }, 800);
+    });
+  </script>
+</body>
+
+
+</html>
