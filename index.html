@@ -180,6 +180,27 @@
               action="https://formspree.io/f/mvgknpee"
               method="POST"
             >
+            …
+            <script src="assets/js/jquery-2.1.0.min.js"></script>
+            <script>
+              // DOM is ready, bind the submit handler
+              $(function(){
+                $('#contact').on('submit', function(e){
+                  e.preventDefault();
+                  fetch(this.action, {
+                    method: this.method,
+                    body: new FormData(this),
+                    headers: { 'Accept': 'application/json' }
+                  }).then(res => {
+                    if (res.ok) {
+                      $('#contact').html('<p class="thank-you">Thanks — I’ll be in touch soon!</p>');
+                    }
+                  });
+                });
+              });
+            </script>
+          </body>
+          
               <!-- NO more <input name="_next"> here! -->
               <input type="hidden" name="_next" value="https://miguelochoa1.github.io/Leslie-s-Website/" />
               <input type="hidden" name="_captcha" value="false" />
