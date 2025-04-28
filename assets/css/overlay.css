@@ -230,6 +230,12 @@ banner
     width: 100%;
 }
 
+/* force the video‐overlay to touch the bottom of the banner */
+.main-banner .video-overlay {
+  bottom: 3 !important;
+}
+
+
 .main-banner .caption {
   text-align: center;
   position: absolute;
@@ -553,6 +559,15 @@ html, body {
 }
 #contact-us .contact-form {
   padding-top: 10px !important;
+}
+
+#contact-us .thank-you {
+  font-size: 1.2rem !important;      /* larger text */
+  line-height: 0.1 !important;       /* more breathing room between lines */
+  letter-spacing: 0.02em !important; /* slight letter spacing */
+  margin: 2rem 0 !important;         /* space above and below */
+  text-align: left !important;     /* center it in the form area */
+  color: #232d39 !important;         /* match your headings */
 }
 
 

@@ -180,7 +180,7 @@
               action="https://formspree.io/f/mvgknpee"
               method="POST"
             >
-              <input type="hidden" name="_next" value="http://127.0.0.1:5500/training-studio-1.0.0/index.html" />
+              <!-- NO more <input name="_next"> here! -->
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_subject" value="New inquiry from website" />
 
@@ -254,12 +254,42 @@
   <script src="assets/js/jquery-2.1.0.min.js"></script>
   <script src="assets/js/popper.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- Smooth scroll to contact -->
   <script>
     $('#scroll-to-contact').on('click', function(e) {
       e.preventDefault();
       $('html, body').animate({
         scrollTop: $('#contact-us').offset().top
       }, 800);
+    });
+  </script>
+
+  <!-- AJAX form submission -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contact');
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch(form.action, {
+          method: form.method,
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(response => {
+          if (response.ok) {
+            form.innerHTML =
+              '<p class="thank-you">Thanks for reaching out — I’ll be in touch soon!</p>';
+          } else {
+            // Optional: show your own error message
+            alert('Oops! There was a problem submitting your form.');
+          }
+        })
+        .catch(error => {
+          console.error('Form submission error:', error);
+          alert('Oops! There was a network error.');
+        });
+      });
     });
   </script>
 </body>
