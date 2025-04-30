@@ -539,3 +539,24 @@ html, body {
 }
 
 
+/* move the caption up a bit */
+.main-banner .caption {
+  top: 45% !important;                /* pull it higher than 50% */
+  transform: translate(-50%, -45%) !important;
+}
+
+/* make the main title larger */
+.main-banner .caption h2 {
+  font-size: 7rem;                    /* adjust this value to taste */
+  line-height: 1.1;                   /* tighten the lines if it wraps */
+  margin-bottom: 0.5rem;              /* a bit of breathing room before the button */
+}
+
+.main-banner .caption h2 {
+  margin-bottom: 1.5rem;  /* pushes the button down */
+}
+
+.main-banner .main-button {
+  margin-top: 1rem;       /* adds breathing room above the button */
+}
+

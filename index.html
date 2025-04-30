@@ -155,7 +155,14 @@
 
   <!-- Main Banner -->
   <div class="main-banner" id="top">
-    <video autoplay muted loop id="bg-video">
+    <video
+  id="bg-video"
+  autoplay
+  muted
+  loop
+  playsinline
+  webkit-playsinline
+>
       <source src="assets/images/cinema.mp4" type="video/mp4" />
     </video>
     <div class="video-overlay header-text">
@@ -314,5 +321,18 @@
       });
     });
   </script>
+  
+ <!-- finally, our “force play” snippet -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const v = document.getElementById('bg-video');
+      if (v && v.paused) {
+        v.play().catch(() => {
+          /* swallow any error; browser simply refused */
+        });
+      }
+    });
+  </script>
+  
 </body>
 </html>
